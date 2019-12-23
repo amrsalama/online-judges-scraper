@@ -1,10 +1,13 @@
-import { IJudgeOption, SupportedJudges } from "../judges";
+import { IJudgeOption, Codeforces, URI, UVa } from "../judges";
 
 export interface IScraperOptions {
   headless?: boolean;
-  judges?: IJudgeOption[];
+  judges: IJudgeOption[];
 }
 
-export type IJudges = {
-  [key in SupportedJudges]: any;
+export type JudgesObject = {
+  "Codeforces": Codeforces;
+  "URI": URI;
+  "UVa": UVa;
+  // [key in SupportedJudges]: Codeforces | URI | UVa;
 };
