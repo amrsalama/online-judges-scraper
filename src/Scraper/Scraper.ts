@@ -1,7 +1,5 @@
 import puppeteer, { Browser } from "puppeteer";
-import { Codeforces, UVa, URI } from "../judges";
 import { IScraperOptions } from "./interfaces";
-import { IJudges } from "./interfaces";
 import { JUDGES } from "./constants";
 
 export default class Scraper {
