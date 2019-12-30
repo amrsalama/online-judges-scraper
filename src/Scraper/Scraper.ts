@@ -15,7 +15,7 @@ export default class Scraper {
       const logins: Promise<void>[] = [];
 
       judges?.forEach(({ judge, credentials }) => {
-        const Judge: any = JUDGES[judge];
+        const Judge = JUDGES[judge];
         logins.push(new Judge(browser).login(credentials));
       });
 
