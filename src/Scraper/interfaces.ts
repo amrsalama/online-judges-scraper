@@ -1,10 +1,10 @@
-import { IJudgeCredentials } from "../judges";
+import { IJudgeOption, SupportedJudges } from "../judges";
 
 export interface IScraperOptions {
   headless?: boolean;
-  judges?: {
-    Codeforces?: IJudgeCredentials;
-    UVa?: IJudgeCredentials;
-    URI?: IJudgeCredentials;
-  };
+  judges?: IJudgeOption[];
 }
+
+export type IJudges = {
+  [key in SupportedJudges]: any;
+};

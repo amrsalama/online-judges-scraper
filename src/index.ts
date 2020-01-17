@@ -3,10 +3,19 @@ import Scraper from "./Scraper";
 (async (): Promise<void> => {
   await Scraper.run({
     headless: false,
-    judges: {
-      Codeforces: { username: "fake", password: "fake" },
-      UVa: { username: "fake", password: "fake" },
-      URI: { username: "fake@gmail.com", password: "fake" }
-    }
+    judges: [
+      {
+        judge: "Codeforces",
+        credentials: { username: "fake", password: "fake" }
+      },
+      {
+        judge: "UVa",
+        credentials: { username: "fake", password: "fake" }
+      },
+      {
+        judge: "URI",
+        credentials: { username: "fake@gmail.com", password: "fake" }
+      }
+    ]
   });
 })();
