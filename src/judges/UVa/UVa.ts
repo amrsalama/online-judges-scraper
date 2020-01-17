@@ -1,5 +1,5 @@
-import Judge from "../Judge";
-import { IJudgeCredentials } from "../interfaces";
+import Judge from "~/judges/Judge";
+import { IJudgeCredentials } from "~/judges/interfaces";
 
 class UVa extends Judge {
   async login(credentials: IJudgeCredentials): Promise<void> {

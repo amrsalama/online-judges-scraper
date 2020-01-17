@@ -1,4 +1,4 @@
-import { Codeforces, UVa, URI } from "../judges";
+import { Codeforces, UVa, URI } from "~/judges";
 import { IJudges } from "./interfaces";
 
 export const JUDGES: IJudges = {

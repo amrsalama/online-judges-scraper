@@ -1,6 +1,6 @@
-import Judge from "../Judge";
-import { InvalidLoginCredentialsError } from "../../errors";
-import { IJudgeCredentials } from "../interfaces";
+import Judge from "~/judges/Judge";
+import { InvalidLoginCredentialsError } from "~/errors";
+import { IJudgeCredentials } from "~/judges/interfaces";
 
 class Codeforces extends Judge {
   async login(credentials: IJudgeCredentials): Promise<void> {

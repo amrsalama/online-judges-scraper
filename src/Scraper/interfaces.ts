@@ -1,4 +1,4 @@
-import { IJudgeOption, SupportedJudges } from "../judges";
+import { IJudgeOption, SupportedJudges } from "~/judges";
 
 export interface IScraperOptions {
   headless?: boolean;

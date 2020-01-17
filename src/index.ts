@@ -1,4 +1,4 @@
-import Scraper from "./Scraper";
+import Scraper from "~/Scraper";
 
 (async (): Promise<void> => {
   await Scraper.run({
