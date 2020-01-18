@@ -1,6 +1,8 @@
 import puppeteer, { Browser } from "puppeteer";
 import { Codeforces, UVa, URI } from "../judges";
 import { IScraperOptions } from "./interfaces";
+import { IJudges } from "./interfaces";
+import { JUDGES } from "./constants";
 
 export default class Scraper {
   private constructor(private browser: Browser) {}
@@ -13,17 +15,11 @@ export default class Scraper {
       const scraper = new Scraper(browser);
 
       const logins: Promise<void>[] = [];
-      if (judges?.Codeforces) {
-        logins.push(new Codeforces(browser).login(judges.Codeforces));
-      }
 
-      if (judges?.UVa) {
-        logins.push(new UVa(browser).login(judges.UVa));
-      }
-
-      if (judges?.URI) {
-        logins.push(new URI(browser).login(judges.URI));
-      }
+      judges?.forEach(({ judge, credentials }) => {
+        const Judge: any = JUDGES[judge];
+        logins.push(new Judge(browser).login(credentials));
+      });
 
       await Promise.all(logins);
 

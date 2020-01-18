@@ -1,4 +1,5 @@
 import Judge from "../Judge";
+import { InvalidLoginCredentialsError } from "../../errors";
 import { IJudgeCredentials } from "../interfaces";
 
 class URI extends Judge {
@@ -31,14 +32,17 @@ class URI extends Judge {
 
     await new Promise(resolve => loginPage.once("domcontentloaded", resolve));
 
-    // TODO: handle failed login "alert"
-    await loginPage.evaluate(() => {
-      const qs = document.querySelector.bind(document);
-      const errorPassword = qs(".iziToast-message");
-      if (errorPassword) {
-      } else {
-      }
-    });
+    try {
+      await loginPage.evaluate(() => {
+        return new Promise((resolve, reject) => {
+          const qs = document.querySelector.bind(document);
+          const invalidPassword = qs(".iziToast-message");
+          return invalidPassword ? reject() : resolve();
+        });
+      });
+    } catch (error) {
+      throw new InvalidLoginCredentialsError("URI");
+    }
 
     await loginPage.close();
   }
