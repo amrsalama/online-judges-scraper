@@ -19,18 +19,18 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "puppeteer": "^2.0.0"
+    "puppeteer": "^2.1.1"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
-    "@types/node": "^13.1.2",
-    "@types/puppeteer": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.14.0",
-    "@typescript-eslint/parser": "^2.14.0",
+    "@types/node": "^13.11.0",
+    "@types/puppeteer": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.9.0",
-    "husky": "^3.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "husky": "^4.2.3",
     "nodemon": "^2.0.2",
-    "typescript": "^3.7.4"
+    "typescript": "^3.8.3"
   }
 }

@@ -1,11 +1,9 @@
 import puppeteer, { Browser } from "puppeteer";
-import { Codeforces, UVa, URI } from "../judges";
-import { IScraperOptions } from "./interfaces";
-import { IJudges } from "./interfaces";
-import { JUDGES } from "./constants";
+import { IScraperOptions, JudgesObject } from "./interfaces";
+import { Codeforces, UVa, URI } from '../judges'
 
 export default class Scraper {
-  private constructor(private browser: Browser) {}
+  private constructor(private browser: Browser) { }
 
   public static async run(options: IScraperOptions): Promise<Scraper> {
     const { headless = true, judges } = options;
@@ -14,11 +12,15 @@ export default class Scraper {
       const browser = await puppeteer.launch({ headless });
       const scraper = new Scraper(browser);
 
-      const logins: Promise<void>[] = [];
+      const JUDGES: JudgesObject = {
+        Codeforces: new Codeforces(browser),
+        UVa: new UVa(browser),
+        URI: new URI(browser)
+      };
 
-      judges?.forEach(({ judge, credentials }) => {
-        const Judge: any = JUDGES[judge];
-        logins.push(new Judge(browser).login(credentials));
+      const logins: Promise<void>[] = judges.map(({ judge, credentials }) => {
+        const Judge = JUDGES[judge];
+        return Judge.login(credentials);
       });
 
       await Promise.all(logins);
